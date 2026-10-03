@@ -26,7 +26,7 @@ Or click **Remove authorization** in Stowaway before a plain `brew uninstall --c
 
 ## Maintaining
 
-`scripts/release.sh` in the Stowaway repo builds, signs and notarizes `Stowaway-<version>.dmg`, then rewrites the `version` and `sha256` lines of `Casks/stowaway.rb`. `scripts/publish.sh` creates the GitHub release as a draft, commits and pushes the cask here, then publishes the release. Don't edit those two lines by hand.
+`scripts/release.sh --unsigned` in the Stowaway repo builds the ad-hoc-signed `Stowaway-<version>.dmg` (with `TEAM_ID` set and no `--unsigned`, it signs and notarizes it instead), then rewrites the `version` and `sha256` lines of `Casks/stowaway.rb`. `scripts/publish.sh` creates the GitHub release as a draft, commits and pushes the cask here, then publishes the release. Don't edit those two lines by hand.
 
 Before the first release the `sha256` line is 64 zeros. That's a placeholder in the format `release.sh` replaces. It makes installs fail the checksum check instead of skipping it the way `sha256 :no_check` would.
 

@@ -22,14 +22,16 @@ cask "stowaway" do
     run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/Stowaway.app"]
   end
 
-  # Quitting the app restores sleep. This backs that up without a password prompt: it
-  # matches Stowaway's own NOPASSWD rule and quietly does nothing if the rule is gone.
+  # Quitting the app restores sleep. This backs that up without a password prompt: it matches
+  # Stowaway's own NOPASSWD rule. If the rule is gone, sudo -n fails without prompting, and the
+  # uninstall carries on without showing sudo's error.
   # The rule itself is removed only by zap, so upgrades don't force re-authorizing.
   uninstall quit:   "com.sihan.stowaway",
             script: {
               executable:   "/usr/bin/sudo",
               args:         ["-n", "/usr/bin/pmset", "-a", "disablesleep", "0"],
               must_succeed: false,
+              print_stderr: false,
             }
 
   zap delete: "/private/etc/sudoers.d/stowaway",
