@@ -1,6 +1,6 @@
 cask "stowaway" do
   version "1.0.0"
-  sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+  sha256 "52a4e684ee67293b4fa661273c5353496de10588dd22d3ea4561dd5268c30366"
 
   url "https://github.com/SihanCheng0/stowaway/releases/download/v#{version}/Stowaway-#{version}.dmg"
   name "Stowaway"
