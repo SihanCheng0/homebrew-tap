@@ -1,6 +1,6 @@
 cask "stowaway" do
-  version "1.0.0"
-  sha256 "52a4e684ee67293b4fa661273c5353496de10588dd22d3ea4561dd5268c30366"
+  version "1.1.0"
+  sha256 "7505736c797947f999ac36134594fbf13cdaf33709a2dbb08e19cb91e3da01a2"
 
   url "https://github.com/SihanCheng0/stowaway/releases/download/v#{version}/Stowaway-#{version}.dmg"
   name "Stowaway"
@@ -36,8 +36,10 @@ cask "stowaway" do
 
   zap delete: "/private/etc/sudoers.d/stowaway",
       trash:  [
+        "~/.config/stowaway",
         "~/Library/Caches/com.sihan.stowaway",
         "~/Library/HTTPStorages/com.sihan.stowaway",
+        "~/Library/Logs/Stowaway",
         "~/Library/Preferences/com.sihan.stowaway.plist",
       ]
 
